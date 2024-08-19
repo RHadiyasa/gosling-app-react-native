@@ -12,6 +12,7 @@ const HomeScreen = () => {
   const userData = route.params;
 
   console.log("user: ", userData);
+  
   return (
     <SafeAreaView className="flex-1">
       <StatusBar barStyle={"dark-content"} />
@@ -21,7 +22,7 @@ const HomeScreen = () => {
           <InstagramStory userData={userData} />
           <InstagramFeed />
         </ScrollView>
-        <InstagramTabBar />
+        {/* <InstagramTabBar /> */}
       </View>
     </SafeAreaView>
   );

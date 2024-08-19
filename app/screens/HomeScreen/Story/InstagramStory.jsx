@@ -66,7 +66,7 @@ const InstagramStory = ({ userData }) => {
         </View>
         {storyData.map((story) => {
           return (
-            <View className="items-center justify-between">
+            <View className="items-center justify-between" key={story.id}>
               <LinearGradient
                 colors={
                   story.closeFriend
@@ -104,5 +104,3 @@ const InstagramStory = ({ userData }) => {
 };
 
 export default InstagramStory;
-
-const styles = StyleSheet.create({});

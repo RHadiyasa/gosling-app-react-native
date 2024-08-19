@@ -12,6 +12,10 @@ const LoginScreen = () => {
 
   const handleLogin = async () => {
     // Logic username and password cannot be empty
+    // {} => object
+    // () => Fungsi / method
+    // [] => Array -> larik
+    // <> => component
     if (username.length === 0 || password.length === 0) {
       alert("Username and password cannot be empty");
       return;
@@ -29,7 +33,10 @@ const LoginScreen = () => {
       }
 
       alert(`Welcome, ${user.username}`);
-      navigation.navigate("Home", user);
+      navigation.navigate("Main", {
+        screen: "Home",
+        params: user,
+      });
     } catch (error) {
       console.error(error.message);
     }
