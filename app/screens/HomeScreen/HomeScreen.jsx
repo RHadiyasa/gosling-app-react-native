@@ -5,7 +5,6 @@ import { useRoute } from "@react-navigation/native";
 import InstagramHeader from "./Header/InstagramHeader";
 import InstagramFeed from "./Feed/InstagramFeed";
 import InstagramStory from "./Story/InstagramStory";
-import InstagramTabBar from "./TabBar/InstagramTabBar";
 
 const HomeScreen = () => {
   const route = useRoute();
