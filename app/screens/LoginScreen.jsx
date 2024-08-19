@@ -2,12 +2,38 @@ import { Text, TextInput, View } from "react-native";
 import React, { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import CustomButton from "../components/CustomButton";
+import axiosInstance from "../service/axios";
+import { useNavigation } from "@react-navigation/native";
 
 const LoginScreen = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const navigation = useNavigation();
 
-  const handleLogin = () => {};
+  const handleLogin = async () => {
+    // Logic username and password cannot be empty
+    if (username.length === 0 || password.length === 0) {
+      alert("Username and password cannot be empty");
+      return;
+    }
+
+    try {
+      const response = await axiosInstance.get(`/users`, {
+        params: { username, password },
+      });
+
+      const user = response.data[0]; // ambil index array pertama
+      if (!user || user.password !== password) {
+        alert("Invalid username or password");
+        return;
+      }
+
+      alert(`Welcome, ${user.username}`);
+      navigation.navigate("Home", user);
+    } catch (error) {
+      console.error(error.message);
+    }
+  };
 
   return (
     <SafeAreaView className="flex-1 items-center justify-center">

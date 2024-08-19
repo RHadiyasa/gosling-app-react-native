@@ -42,7 +42,7 @@ const RegisterScreen = () => {
         alert("Username already exists");
         return;
       }
-      
+
       AuthService().register(username, email, password);
 
       setConfirmPassword("");
@@ -52,7 +52,7 @@ const RegisterScreen = () => {
       alert("Registration Successful");
 
       // goto login
-      navigation.navigate("Login");
+      navigation.goBack(); 
     } catch (error) {
       console.error(error.message);
     }
