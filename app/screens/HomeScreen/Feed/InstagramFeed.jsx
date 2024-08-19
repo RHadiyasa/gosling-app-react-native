@@ -3,6 +3,7 @@ import React from "react";
 import { FlatList, ScrollView, TouchableOpacity } from "react-native";
 import { View, Image, Text } from "react-native";
 import Ionicons from "react-native-vector-icons/Ionicons";
+import FeedContentList from "./Content/FeedContentList";
 
 const InstagramFeed = () => {
   const posts = [
@@ -40,55 +41,14 @@ const InstagramFeed = () => {
         keyExtractor={(item) => item.id.toString()}
         renderItem={({ item }) => {
           return (
-            <View key={item.id} className="mb-4">
-              <View className="flex-row items-center p-4 gap-x-2">
-                <Image
-                  source={{ uri: item.profileImage }}
-                  style={{ width: 30, height: 30, borderRadius: 15 }}
-                />
-                <Text className="font-bold">{item.username}</Text>
-              </View>
-              <Image
-                source={{ uri: item.image }}
-                style={{ width: "100%", aspectRatio: 1 }}
-              />
-              {/* Icons like, comment, saved */}
-              <View className="flex-row justify-between px-4 mt-3">
-                <View className="flex-row gap-x-3">
-                  <TouchableOpacity>
-                    <Ionicons name="heart-outline" size={32} color="black" />
-                  </TouchableOpacity>
-                  <TouchableOpacity>
-                    <Ionicons
-                      name="chatbubble-outline"
-                      size={32}
-                      color="black"
-                    />
-                  </TouchableOpacity>
-                  <TouchableOpacity>
-                    <Ionicons
-                      name="paper-plane-outline"
-                      size={32}
-                      color="black"
-                    />
-                  </TouchableOpacity>
-                </View>
-                <View>
-                  <Ionicons name="bookmark-outline" size={32} color="black" />
-                </View>
-              </View>
-              <View className="px-4 mt-2">
-                <Text className="font-semibold">
-                  Liked by {item.likes} others
-                </Text>
-              </View>
-              <View className="px-4">
-                <Text className="font-bold">
-                  {item.username}{" "}
-                  <Text className="font-normal">{item.caption}</Text>
-                </Text>
-              </View>
-            </View>
+            <FeedContentList
+              id={item.id}
+              username={item.username}
+              likes={item.likes}
+              profileImage={item.profileImage}
+              image={item.image}
+              caption={item.caption}
+            />
           );
         }}
       />
