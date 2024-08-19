@@ -53,47 +53,6 @@ const InstagramFeed = () => {
         }}
       />
     </View>
-    // <View className="w-full bg-white">
-    //   {posts.map((post) => (
-    //     <View key={post.id} className="mb-4">
-    //       <View className="flex-row items-center p-4 gap-x-2">
-    //         <Image source={{ uri: post.profileImage }} width={30} height={30} />
-    //         <Text className="font-bold">{post.username}</Text>
-    //       </View>
-    //       <Image
-    //         source={{ uri: post.image }}
-    //         style={{ resizeMode: "cover", aspectRatio: 1 / 1 }}
-    //       />
-    //       {/* icons like, comment, saved */}
-    //       <View className="flex-row justify-between px-4 mt-3">
-    //         <View className="flex-row gap-x-3">
-    //           <TouchableOpacity>
-    //             <Ionicons name="heart-outline" size={32} color="black" />
-    //           </TouchableOpacity>
-    //           <TouchableOpacity>
-    //             <Ionicons name="chatbubble-outline" size={32} color="black" />
-    //           </TouchableOpacity>
-    //           <TouchableOpacity>
-    //             <Ionicons name="paper-plane-outline" size={32} color="black" />
-    //           </TouchableOpacity>
-    //         </View>
-    //         <View>
-    //           <Ionicons name="bookmark-outline" size={32} color="black" />
-    //         </View>
-    //       </View>
-    //       <View className="px-4 mt-2">
-    //         <Text className="font-semibold">Liked by {post.likes} others</Text>
-    //       </View>
-    //       <View className="px-4">
-    //         <Text className="font-bold">
-    //           {post.username}{" "}
-    //           <Text className="font-normal">{post.caption}</Text>
-    //         </Text>
-    //       </View>
-    //     </View>
-    //   ))}
-
-    // </View>
   );
 };
 
