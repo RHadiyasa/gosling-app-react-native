@@ -4,11 +4,13 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import CustomButton from "../components/CustomButton";
 import axiosInstance from "../service/axios";
 import { useNavigation } from "@react-navigation/native";
+import { useDispatch } from "react-redux";
 
 const LoginScreen = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigation = useNavigation();
+  const dispatch = useDispatch();
 
   const handleLogin = async () => {
     // Logic username and password cannot be empty
@@ -35,8 +37,13 @@ const LoginScreen = () => {
       alert(`Welcome, ${user.username}`);
       navigation.navigate("Main", {
         screen: "Home",
-        params: user,
       });
+
+      dispatch({
+        type: "LOGIN",
+        payload: user,
+      });
+
     } catch (error) {
       console.error(error.message);
     }

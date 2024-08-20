@@ -2,8 +2,10 @@ import { Image, ScrollView, StyleSheet, Text, View } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import React from "react";
 import trimUsername from "../../../lib/trimUsername";
+import { useSelector } from "react-redux";
 
-const InstagramStory = ({ userData }) => {
+const InstagramStory = () => {
+  const userSelector = useSelector((state) => state.loggedInUser);
   const userImageUrl =
     "https://instagram.fmlg11-1.fna.fbcdn.net/v/t51.2885-19/436401939_1139091060612427_463883755798944200_n.jpg?stp=dst-jpg_s150x150&_nc_ht=instagram.fmlg11-1.fna.fbcdn.net&_nc_cat=107&_nc_ohc=4pnSJOG1vP0Q7kNvgFBHYFB&edm=AAAAAAABAAAA&ccb=7-5&oh=00_AYAEU-WyvrJ55kHfKmog9v4mmo6xWWK801VIZ2unZ54b_A&oe=66C79507&_nc_sid=328259";
 
@@ -44,6 +46,7 @@ const InstagramStory = ({ userData }) => {
         "https://instagram.fmlg11-1.fna.fbcdn.net/v/t51.2885-19/445798507_7495268033884181_327152733178646743_n.jpg?stp=dst-jpg_s150x150&_nc_ht=instagram.fmlg11-1.fna.fbcdn.net&_nc_cat=105&_nc_ohc=qrWwXVONhLwQ7kNvgH7APpr&edm=AAAAAAABAAAA&ccb=7-5&oh=00_AYA2tXz1Gk4psoP8LwhKYvpSTrRs00P2eMJffBOBB-1GoA&oe=66C7A077&_nc_sid=328259",
     },
   ];
+
   return (
     <View className="flex-row items-start bg-white">
       <ScrollView
@@ -62,7 +65,8 @@ const InstagramStory = ({ userData }) => {
               resizeMode: "cover",
             }}
           />
-          <Text>{userData.username}</Text>
+          <Text>{userSelector.loggedInUser.username}</Text>
+
         </View>
         {storyData.map((story) => {
           return (

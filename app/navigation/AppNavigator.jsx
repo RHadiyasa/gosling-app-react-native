@@ -3,14 +3,16 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import WelcomeScreen from "../screens/WelcomeScreen";
 import RegisterScreen from "../screens/RegisterScreen";
 import LoginScreen from "../screens/LoginScreen";
-import HomeScreen from "../screens/HomeScreen/HomeScreen";
 import TabNavigator from "./TabNavigator";
+import { useSelector } from "react-redux";
 
 const Stack = createNativeStackNavigator();
 
 const AppNavigator = () => {
+  const userSelector = useSelector((state) => state.loggedInUser);
+
   return (
-    <Stack.Navigator>
+    <Stack.Navigator initialRouteName={userSelector.loggedInUser ? "Main" : "Welcome"}>
       <Stack.Screen
         name="Welcome"
         component={WelcomeScreen}

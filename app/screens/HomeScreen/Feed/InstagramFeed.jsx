@@ -32,7 +32,7 @@ const InstagramFeed = () => {
   ];
 
   return (
-    <View className="w-full bg-white">
+    <View className="flex-1 w-full bg-white">
       <StatusBar style="auto" />
 
       <FlatList
