@@ -4,22 +4,39 @@ import WelcomeScreen from "../screens/WelcomeScreen";
 import RegisterScreen from "../screens/RegisterScreen";
 import LoginScreen from "../screens/LoginScreen";
 import TabNavigator from "./TabNavigator";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Text, View } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const Stack = createNativeStackNavigator();
 
 const AppNavigator = () => {
   const [loading, setLoading] = useState(true);
   const userSelector = useSelector((state) => state.loggedInUser);
-  console.log(userSelector.loggedInUser.id);
+  const dispatch = useDispatch();
 
-  useEffect(() => {
+  console.log("Store ID user: ", userSelector.loggedInUser.id);
+
+  // Check local storage apakah ada user yang sudah login
+  const checkLoggedInUser = async () => {
+    const loggedInUser = await AsyncStorage.getItem("loggedInUser");
+
+    // Kalau ada loggedInUser maka kita akan ambil, dan dispatch ke dalam store user
+    if (loggedInUser) {
+      dispatch({
+        type: "LOGIN",
+        payload: JSON.parse(loggedInUser),
+      });
+    }
     // Simulasi fetch data
     setTimeout(() => {
       setLoading(false);
     }, 3000);
-  });
+  };
+
+  useEffect(() => {
+    checkLoggedInUser();
+  }, []);
 
   if (loading) {
     return (

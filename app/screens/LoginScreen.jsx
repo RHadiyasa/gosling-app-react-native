@@ -5,6 +5,7 @@ import CustomButton from "../components/CustomButton";
 import axiosInstance from "../service/axios";
 import { useNavigation } from "@react-navigation/native";
 import { useDispatch } from "react-redux";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const LoginScreen = () => {
   const [username, setUsername] = useState("");
@@ -29,6 +30,7 @@ const LoginScreen = () => {
       });
 
       const user = response.data[0]; // ambil index array pertama
+      
       if (!user || user.password !== password) {
         alert("Invalid username or password");
         return;
@@ -38,6 +40,8 @@ const LoginScreen = () => {
       navigation.navigate("Main", {
         screen: "Home",
       });
+
+      await AsyncStorage.setItem("loggedInUser", JSON.stringify(user));
 
       dispatch({
         type: "LOGIN",
