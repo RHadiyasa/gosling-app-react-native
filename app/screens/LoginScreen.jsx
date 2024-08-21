@@ -5,7 +5,8 @@ import CustomButton from "../components/CustomButton";
 import axiosInstance from "../service/axios";
 import { useNavigation } from "@react-navigation/native";
 import { useDispatch } from "react-redux";
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import AuthService from "../service/auth.service";
 
 const LoginScreen = () => {
   const [username, setUsername] = useState("");
@@ -25,12 +26,10 @@ const LoginScreen = () => {
     }
 
     try {
-      const response = await axiosInstance.get(`/users`, {
-        params: { username, password },
-      });
-
-      const user = response.data[0]; // ambil index array pertama
+      const checkUser = await AuthService().login(username, password);
       
+      const user = checkUser[0];
+
       if (!user || user.password !== password) {
         alert("Invalid username or password");
         return;
@@ -47,7 +46,6 @@ const LoginScreen = () => {
         type: "LOGIN",
         payload: user,
       });
-
     } catch (error) {
       console.error(error.message);
     }

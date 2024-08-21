@@ -1,4 +1,4 @@
-import { FlatList, ScrollView, StatusBar, Text, View } from "react-native";
+import { StatusBar, View } from "react-native";
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import InstagramHeader from "./Header/InstagramHeader";
@@ -13,7 +13,6 @@ const HomeScreen = () => {
         <InstagramHeader />
         <InstagramStory />
         <InstagramFeed />
-        {/* <InstagramTabBar /> */}
       </View>
     </SafeAreaView>
   );

@@ -4,6 +4,7 @@
 const INITIAL_STATE = {
   // loggedInUser: { username: "admin", email: "admin", id: "admin"},
   loggedInUser: {},
+  userProfileImage: "",
   message: "Hello Gosling",
 };
 

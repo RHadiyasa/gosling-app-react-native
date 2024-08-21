@@ -4,10 +4,8 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import CustomButton from "../components/CustomButton";
 import { StatusBar } from "expo-status-bar";
 import { useNavigation } from "@react-navigation/native";
-import { useSelector } from "react-redux";
 
 const WelcomeScreen = () => {
-  const userSelector = useSelector((state) => state.loggedInUser);
   const navigation = useNavigation();
   const logoUrl =
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTh7-vEiaFpPrnfIzPo7V-Y1behZWWR-AkAVg&s";
@@ -36,9 +34,6 @@ const WelcomeScreen = () => {
           </View>
 
           {/* Cek dulu */}
-          <Text className="text-center">{userSelector.loggedInUser.username}</Text>
-          <Text className="text-center">{userSelector.loggedInUser.email}</Text>
-          <Text className="text-center">{userSelector.loggedInUser.id}</Text>
 
         </View>
       </View>

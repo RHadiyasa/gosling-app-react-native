@@ -2,10 +2,10 @@ import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import ExploreScreen from "../screens/HomeScreen/ExploreScreen";
 import AddPost from "../screens/HomeScreen/AddPost";
-import NotificationScreen from "../screens/HomeScreen/NotificationScreen";
 import ProfileScreen from "../screens/HomeScreen/ProfileScreen";
 import HomeScreen from "../screens/HomeScreen/HomeScreen";
 import Ionicons from "react-native-vector-icons/Ionicons";
+import MovieScreen from "../screens/HomeScreen/MovieScreen";
 
 const Tab = createBottomTabNavigator();
 
@@ -47,7 +47,7 @@ const TabNavigator = () => {
       />
       <Tab.Screen
         name="Notification"
-        component={NotificationScreen}
+        component={MovieScreen}
         options={{
           tabBarShowLabel: false,
           tabBarIcon: () => (

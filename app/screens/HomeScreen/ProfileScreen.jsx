@@ -3,12 +3,15 @@ import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useDispatch, useSelector } from "react-redux";
 import CustomButton from "../../components/CustomButton";
+import AuthService from "../../service/auth.service";
 
 const ProfileScreen = ({ navigation }) => {
   const userSelector = useSelector((state) => state.loggedInUser);
   const dispatch = useDispatch();
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
+    await AuthService().logout();
+
     dispatch({
       type: "LOGOUT",
       payload: {},

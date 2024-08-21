@@ -4,7 +4,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import CustomButton from "../components/CustomButton";
 import axiosInstance from "../service/axios";
 import { useNavigation } from "@react-navigation/native";
-import AuthService from "../service/AuthService";
+import AuthService from "../service/auth.service";
 
 const RegisterScreen = () => {
   const [username, setUsername] = useState("");

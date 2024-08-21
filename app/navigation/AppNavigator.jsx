@@ -15,8 +15,6 @@ const AppNavigator = () => {
   const userSelector = useSelector((state) => state.loggedInUser);
   const dispatch = useDispatch();
 
-  console.log("Store ID user: ", userSelector.loggedInUser.id);
-
   // Check local storage apakah ada user yang sudah login
   const checkLoggedInUser = async () => {
     const loggedInUser = await AsyncStorage.getItem("loggedInUser");
